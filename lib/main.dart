@@ -1,6 +1,5 @@
-import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-
+import 'package:assets_audio_player/assets_audio_player.dart';
 
 void main() {
   runApp(const XylophoneApp());
@@ -8,6 +7,12 @@ void main() {
 
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({Key? key}) : super(key: key);
+
+  // Future<void> setSource(Source source) async {
+  //   setState(() => isSourceSet = false);
+  //   await widget.player.setSource(source);
+  //   setState(() => isSourceSet = true);
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -18,10 +23,16 @@ class XylophoneApp extends StatelessWidget {
           child: Center(
             child: TextButton(
               onPressed: () {
-                final player = AudioCache();
-                player.prefix = 'note1.wav';
+                final assetsAudioPlayer = AssetsAudioPlayer();
+
+                assetsAudioPlayer.open(
+                  Audio("assets/audio/note1.wav"),
+                );
               },
-              child: const Text('Click Here'),
+              // onPressed: () => AudioCache AudioCache({String prefix = 'assets/note1.wav'}),
+              //     String prefix;
+
+              child: const Text('Click Me'),
             ),
           ),
         ),
