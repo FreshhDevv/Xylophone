@@ -12,65 +12,38 @@ void playSound(int soundNumber) {
   );
 }
 
+// Expanded on the buildKey function is a datatype for the Expanded widget
+Expanded buildKey({Color? color, required int soundNumber}) {
+  return Expanded(
+    child: ElevatedButton(
+      style: ElevatedButton.styleFrom(primary: color),
+      onPressed: () {
+        playSound(soundNumber);
+      },
+      child: null,
+    ),
+  );
+}
+
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           // Use TextButton instead of FlatButton
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.red),
-                onPressed: () {
-                  playSound(1);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.green),
-                onPressed: () {
-                  playSound(2);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.grey),
-                onPressed: () {
-                  playSound(3);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.blue),
-                onPressed: () {
-                  playSound(4);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.orange),
-                onPressed: () {
-                  playSound(5);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
-                onPressed: () {
-                  playSound(6);
-                },
-                child: null,
-              ),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.blueAccent),
-                onPressed: () {
-                  playSound(7);
-                },
-                child: null,
-              ),
+              buildKey(color: Colors.red, soundNumber: 1),
+              buildKey(color: Colors.green, soundNumber: 2),
+              buildKey(color: Colors.grey, soundNumber: 3),
+              buildKey(color: Colors.blue, soundNumber: 4),
+              buildKey(color: Colors.orange, soundNumber: 5),
+              buildKey(color: Colors.teal, soundNumber: 6),
+              buildKey(color: Colors.purple, soundNumber: 7),
             ],
           ),
         ),
