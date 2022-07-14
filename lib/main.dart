@@ -4,6 +4,14 @@ import 'package:assets_audio_player/assets_audio_player.dart';
 void main() {
   runApp(const XylophoneApp());
 }
+
+void playSound(int soundNumber) {
+  final assetsAudioPlayer = AssetsAudioPlayer();
+  assetsAudioPlayer.open(
+    Audio("assets/audio/note$soundNumber.wav"),
+  );
+}
+
 class XylophoneApp extends StatelessWidget {
   const XylophoneApp({Key? key}) : super(key: key);
   @override
@@ -12,16 +20,58 @@ class XylophoneApp extends StatelessWidget {
       home: Scaffold(
         body: SafeArea(
           // Use TextButton instead of FlatButton
-          child: Center(
-            child: TextButton(
-              onPressed: () {
-                final assetsAudioPlayer = AssetsAudioPlayer();
-                assetsAudioPlayer.open(
-                  Audio("assets/audio/note1.wav"),
-                );
-              },
-              child: const Text('Click Me'),
-            ),
+          child: Column(
+            children: [
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.red),
+                onPressed: () {
+                  playSound(1);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.green),
+                onPressed: () {
+                  playSound(2);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.grey),
+                onPressed: () {
+                  playSound(3);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blue),
+                onPressed: () {
+                  playSound(4);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.orange),
+                onPressed: () {
+                  playSound(5);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blueGrey),
+                onPressed: () {
+                  playSound(6);
+                },
+                child: null,
+              ),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.blueAccent),
+                onPressed: () {
+                  playSound(7);
+                },
+                child: null,
+              ),
+            ],
           ),
         ),
       ),
